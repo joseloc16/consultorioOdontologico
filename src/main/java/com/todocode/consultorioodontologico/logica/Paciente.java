@@ -1,30 +1,32 @@
 package com.todocode.consultorioodontologico.logica;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
 public class Paciente extends Persona {
 
-    private int id_paciente;
     private boolean tieneSeguro;
     private String tipoSangre;
     //Relación one to one de Paciente con Responsable
+    @OneToOne
     private Responsable responsable;
     //Relación one to many de Paciente con Turno
+    @OneToMany(mappedBy = "paciente")
     private List<Turno> listaTurnos;
 
     public Paciente() {
     }
 
-    public Paciente(String dni, String nombre, String apellido, String telefono, String direccion,
-                    String fechaNacimiento, int id_paciente, boolean tieneSeguro, String tipoSangre,
-                    Responsable responsable, List<Turno> turnoList) {
-        super(dni, nombre, apellido, telefono, direccion, fechaNacimiento);
-        this.id_paciente = id_paciente;
+    public Paciente(int id, String dni, String nombre, String apellido, String telefono, String direccion,
+                    LocalDateTime fechaNacimiento, boolean tieneSeguro, String tipoSangre, Responsable responsable,
+                    List<Turno> listaTurnos) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNacimiento);
         this.tieneSeguro = tieneSeguro;
         this.tipoSangre = tipoSangre;
         this.responsable = responsable;
-        this.listaTurnos = turnoList;
+        this.listaTurnos = listaTurnos;
     }
 
     public Responsable getResponsable() {
@@ -41,14 +43,6 @@ public class Paciente extends Persona {
 
     public void setTurnoList(List<Turno> turnoList) {
         this.listaTurnos = turnoList;
-    }
-
-    public int getId_paciente() {
-        return id_paciente;
-    }
-
-    public void setId_paciente(int id_paciente) {
-        this.id_paciente = id_paciente;
     }
 
     public boolean isTieneSeguro() {

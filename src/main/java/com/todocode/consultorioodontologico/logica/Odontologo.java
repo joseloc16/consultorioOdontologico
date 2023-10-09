@@ -1,24 +1,26 @@
 package com.todocode.consultorioodontologico.logica;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
+@Entity
 public class Odontologo extends Persona {
 
-    private int id_odontologo;
     private String especialidad;
+    //Bidireccional, va a estar en ambas clases
+    @OneToMany(mappedBy = "odontologo")
     private List<Turno> listaTurnos;
+    @OneToOne
     private Usuario usuario;
+    @OneToOne
     private Horario horario;
 
     public Odontologo() {
     }
 
-    public Odontologo(String dni, String nombre, String apellido, String telefono, String direccion,
-                      String fechaNacimiento, int id_odontologo, String especialidad,
-                      List<Turno> listaTurnos, Usuario usuario, Horario horario) {
-        super(dni, nombre, apellido, telefono, direccion, fechaNacimiento);
-        this.id_odontologo = id_odontologo;
+    public Odontologo(int id, String dni, String nombre, String apellido, String telefono, String direccion, LocalDateTime fechaNacimiento, String especialidad, List<Turno> listaTurnos, Usuario usuario, Horario horario) {
+        super(id, dni, nombre, apellido, telefono, direccion, fechaNacimiento);
         this.especialidad = especialidad;
         this.listaTurnos = listaTurnos;
         this.usuario = usuario;
@@ -47,14 +49,6 @@ public class Odontologo extends Persona {
 
     public void setHorario(Horario horario) {
         this.horario = horario;
-    }
-
-    public int getId_odontologo() {
-        return id_odontologo;
-    }
-
-    public void setId_odontologo(int id_odontologo) {
-        this.id_odontologo = id_odontologo;
     }
 
     public String getEspecialidad() {
