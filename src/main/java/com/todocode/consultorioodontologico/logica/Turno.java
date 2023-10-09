@@ -1,15 +1,23 @@
 package com.todocode.consultorioodontologico.logica;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Turno {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_turno;
     private LocalDateTime fechaTurno;
     private String horaTurno;
     private String afeccion;
-    private Paciente paciente;
+    @ManyToOne
+    @JoinColumn(name = "id_turno")
     private Odontologo odontologo;
+    @ManyToOne
+    @JoinColumn(name = "id_turno")
+    private Paciente paciente;
 
     public Turno() {
     }
