@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="ConsultorioOdontologico_PU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.todocode.consultorioodontologico.logica.Persona</class>
+        <class>com.todocode.consultorioodontologico.logica.Paciente</class>
+        <class>com.todocode.consultorioodontologico.logica.Odontologo</class>
+        <class>com.todocode.consultorioodontologico.logica.Responsable</class>
+        <class>com.todocode.consultorioodontologico.logica.Secretario</class>
+        <class>com.todocode.consultorioodontologico.logica.Usuario</class>
+        <class>com.todocode.consultorioodontologico.logica.Horario</class>
+        <class>com.todocode.consultorioodontologico.logica.Turno</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/CONSULTORIO_DB?serverTimeZone=UTC"/>
+            <property name="javax.persistence.jdbc.user" value="joselog"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.password" value="12345"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>
