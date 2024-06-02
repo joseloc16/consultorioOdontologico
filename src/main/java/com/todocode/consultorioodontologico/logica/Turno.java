@@ -55,6 +55,14 @@ public class Turno {
         this.horaTurno = horaTurno;
     }
 
+    public String getAfeccion() {
+        return afeccion;
+    }
+
+    public void setAfeccion(String afeccion) {
+        this.afeccion = afeccion;
+    }
+
     public Paciente getPaciente() {
         return paciente;
     }
